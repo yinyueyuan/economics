@@ -1,16 +1,15 @@
-# XGBoost预测碳交易政策对企业投资效率的长期影响
-在评估碳排放交易政策对企业投资效率（IneInvest）的影响时，传统计量方法DID主要用于估计短期政策效应。然而，为了进一步探索政策的长期影响，并提升研究的预测能力，本文采用Extreme Gradient Boosting（XGBoost）进行机器学习建模，以预测未来企业投资效率的变化趋势
-## 模型建立
-数据来源于CSMAR、WIND及上市公司财报，涵盖2008-2022年的A股上市公司。选取自变量包括企业的财务特征（如成长机会 Growth、财务杠杆 Lev、经营现金流CFO、企业规模Asset等）、政策因素（TreatPost）以及行业和地区控制变量。
-首先，对数据集中的文本字段进行了处理，使用Python将其转换为数值型数据。对于无法直接转换的字段（如包含逗号的文本数据），使用了字符串处理方法进行清理。此外，采用中位数填充方式来填补缺失值，确保数据的完整性。
-XGBoost采用梯度提升决策树（GBDT）框架，通过构造多个弱学习器（决策树），不断优化损失函数，以提升预测精度。
+# Predicting the Long-term Impact of Carbon Trading Policies on Corporate Investment Efficiency Using XGBoost
+When assessing the impact of carbon emission trading policies on corporate investment efficiency (IneInvest), traditional econometric methods like Difference-in-Differences (DID) are primarily used to estimate short-term policy effects. However, to further explore the long-term effects of the policy and enhance the predictive capability of the study, this paper employs Extreme Gradient Boosting (XGBoost) for machine learning modeling to forecast future trends in corporate investment efficiency.
+## Model Construction
+The data is sourced from CSMAR, WIND, and the financial reports of listed companies, covering A-share companies from 2008 to 2022. The selected independent variables include corporate financial characteristics (such as growth opportunities (Growth), financial leverage (Lev), operating cash flow (CFO), firm size (Asset), etc.), policy factors (TreatPost), as well as industry and regional control variables.
+First, text fields in the dataset were processed and converted into numerical data using Python. For fields that could not be directly converted (such as text data containing commas), string processing methods were used for cleaning. Additionally, median imputation was applied to handle missing values, ensuring data completeness.
+XGBoost adopts the Gradient Boosting Decision Tree (GBDT) framework, constructing multiple weak learners (decision trees) and continuously optimizing the loss function to improve prediction accuracy.
+The model training results are as follows:
 
-模型训练结果如下所示：
 <img width="423" height="336" alt="image" src="https://github.com/user-attachments/assets/c0e9e3fa-5d34-43bc-8594-56ed66fe16d7" />
 
-为了更好的评估模型，引入两项评估指标：MAE（平均绝对误差）和R²（决定系数），MAE衡量了预测值与实际值之间的平均差异，而R²衡量了模型对目标变量变异性的解释能力。
-在本研究中，模型的MAE为0.8025，R²为0.8633，这表明模型能够解释大约86.33%的投资收益变异性，且预测误差较小，性能较为优越。
-进一步分析，选择Weight作为衡量特征重要性的标准，并根据计算结果绘制特征重要性图如下所示。
-在特征重要性图中，特征被按重要性排序，重要特征位于顶部。图中显示了前十个对模型影响最大的特征，这些特征对模型的目标变量预测贡献最大。根据图示，我们可以观察到Growth、Lev、Asset特征对 IneInvest的预测起到了主导作用，它们在模型中出现的频率较高，并且能够有效地提高模型的预测精度。
-在特征重要性图中，Growth被识别为最重要的特征，表明企业的成长性在预测投资回报（IneInvest）时占据了主导地位。这表明，具有较高增长潜力的企业往往能够获得更高的投资回报，因此企业的增长速度可能是投资决策中一个关键的参考因素。而Lev（负债率）和Asset（资产规模）是企业财务结构的一个重要指标，也拥有较高的特征重要性。这意味着负债水平和资产规模对企业的投资回报具有显著影响。高负债率可能导致企业承担较高的财务成本，进而影响投资回报，因此合理的财务杠杆管理对优化企业的投资回报至关重要；较大的资产规模可能使企业具备更多的资源进行投资和扩张。
-
+To better evaluate the model, two evaluation metrics were introduced: MAE (Mean Absolute Error) and R² (Coefficient of Determination). MAE measures the average difference between predicted and actual values, while R² measures the model's ability to explain the variability of the target variable.
+In this study, the model achieved an MAE of 0.8025 and an R² of 0.8633, indicating that the model explains approximately 86.33% of the variability in investment returns, with a relatively small prediction error, demonstrating superior performance.
+For further analysis, "Weight" was selected as the criterion for measuring feature importance, and a feature importance plot was generated based on the calculations.
+In the feature importance plot, features are sorted by importance, with the most important features at the top. The plot displays the top ten features that have the greatest impact on the model, contributing the most to the prediction of the target variable. According to the plot, it can be observed that Growth, Lev, and Asset play a dominant role in predicting IneInvest. These features appear frequently in the model and effectively enhance prediction accuracy.
+In the feature importance plot, Growth is identified as the most important feature, indicating that a company's growth potential dominates the prediction of investment returns (IneInvest). This suggests that companies with higher growth potential tend to achieve higher investment returns, making growth rate a critical factor in investment decisions. Meanwhile, Lev (leverage ratio) and Asset (asset size), as important indicators of a company's financial structure, also exhibit high feature importance. This implies that leverage levels and asset size significantly impact corporate investment returns. High leverage may lead to increased financial costs, thereby affecting investment returns, highlighting the importance of prudent financial leverage management for optimizing corporate investment performance. Larger asset sizes may provide companies with more resources for investment and expansion.
