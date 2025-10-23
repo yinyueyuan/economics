@@ -1,34 +1,34 @@
-# 京东商品价格分析
+# JD.com Product Price Analysis
 
-## 项目简介
-分析京东平台商品价格分布，重点研究自营店铺是否普遍比非自营店铺价格更高。通过爬取100页商品数据，从店铺分布、价格区间、成交量等维度进行深入分析。
+## Project Overview
+This project analyzes the price distribution of products on JD.com platform, with a focus on determining whether self-operated stores generally have higher prices than non-self-operated stores. By scraping 100 pages of product data, we conduct in-depth analysis from multiple dimensions including store distribution, price ranges, and sales volume.
 
-## 核心发现
+## Key Findings
 
-### 自营店铺优势明显
-自营店铺以不到10%的商品数量赢得了超过80%的成交量，显示出消费者对自营店铺的强烈偏好。
+### Dominance of Self-Operated Stores
+Self-operated stores capture over 80% of total sales volume with less than 10% of product listings, demonstrating strong consumer preference for JD's self-operated stores.
 
-### 价格集中趋势
-超过86%的商品价格集中在400元以下，消费者更倾向于选择中低价位商品。
+### Price Concentration Trend
+More than 86% of products are priced below 400 RMB, indicating consumers' strong preference for mid-to-low price range products.
 
-### 竞争格局悬殊
-30%的专营店只能瓜分不到3%的成交量，市场竞争极为激烈。
+### Highly Competitive Market Landscape
+30% of specialized stores have to compete for less than 3% of total sales volume, reflecting intense market competition.
 
-## 数据分析维度
+## Analysis Dimensions
 
-### 店铺类型分类
-将店铺分为京东自营、旗舰店、专营店和其他四类，便于对比分析。
+### Store Type Classification
+Stores are categorized into four types: JD Self-operated, Flagship Stores, Specialized Stores, and Others for comparative analysis.
 
-### 价格分段统计
-将商品按价格分为9个区间（0-100, 100-200, ..., 1K以上），分析各价格段分布。
+### Price Segment Analysis
+Products are divided into 9 price ranges (0-100, 100-200, ..., Above 1K RMB) to analyze distribution across different price points.
 
-### 成交量估算
-基于商品评论数量估算累计成交量，反映市场销售情况。
+### Sales Volume Estimation
+Cumulative sales volume is estimated based on product review counts, reflecting market performance.
 
-## 技术实现
-使用Python进行数据处理和分析，主要依赖Pandas、Matplotlib、Seaborn等库。数据来源于京东平台，共采集5907条有效商品信息。
+## Technical Implementation
+Data processing and analysis are performed using Python, primarily relying on libraries such as Pandas, Matplotlib, and Seaborn. The dataset comprises 5,907 valid product entries collected from JD.com platform.
 
-## 项目价值
-为电商运营提供数据支持，帮助商家了解市场竞争格局和消费者价格偏好，为定价策略和店铺定位提供参考依据。
+## Project Value
+Provides data-driven insights for e-commerce operations, helping merchants understand market competition patterns and consumer price preferences, thereby supporting pricing strategies and store positioning decisions.
 
-*注：本项目仅用于学习交流，实际商业分析需考虑更多因素。*
+*Note: This project is for learning and exchange purposes only. Practical business analysis should consider additional factors.*
