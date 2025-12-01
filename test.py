@@ -153,7 +153,7 @@ def visualize_results(metrics):
     """可视化分析结果"""
     plt.figure(figsize=(18, 12))
 
-    # 1. 端到端延迟分布
+    # 端到端延迟分布
     plt.subplot(2, 2, 1)
     if metrics['e2e_delays']:
         plt.hist(metrics['e2e_delays'], bins=50, alpha=0.7, color='skyblue')
@@ -164,7 +164,7 @@ def visualize_results(metrics):
         plt.text(0.5, 0.5, "无有效端到端延迟数据", ha='center', va='center', fontsize=12)
         plt.axis('off')
 
-    # 2. 队列延迟分布
+    # 队列延迟分布
     plt.subplot(2, 2, 2)
     if metrics['queue_delays']:
         plt.hist(metrics['queue_delays'], bins=50, alpha=0.7, color='lightgreen')
@@ -175,7 +175,7 @@ def visualize_results(metrics):
         plt.text(0.5, 0.5, "无有效队列延迟数据", ha='center', va='center', fontsize=12)
         plt.axis('off')
 
-    # 3. 传输延迟分布
+    # 传输延迟分布
     plt.subplot(2, 2, 3)
     if metrics['transmission_delays']:
         plt.hist(metrics['transmission_delays'], bins=50, alpha=0.7, color='salmon')
@@ -186,7 +186,7 @@ def visualize_results(metrics):
         plt.text(0.5, 0.5, "无有效传输延迟数据", ha='center', va='center', fontsize=12)
         plt.axis('off')
 
-    # 4. 丢包统计
+    # 丢包统计
     plt.subplot(2, 2, 4)
     labels = ['已发送', '已接收', '已丢失']
     values = [metrics['total_sent'], metrics['total_received'], metrics['total_dropped']]
@@ -229,9 +229,10 @@ def main():
     else:
         print("\n无有效端到端延迟数据")
 
-    # 4. 可视化结果
+    # 可视化结果
     print("\n生成可视化报告...")
     visualize_results(metrics)
 
 if __name__ == "__main__":
+
     main()
