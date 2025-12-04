@@ -124,7 +124,7 @@ Firms in pilot regions reduce inefficient investment more than those in non-pilo
 
 ## **Repository Structure**
 
-```
+
 data/           # Raw and cleaned datasets
 code/           # Stata scripts for cleaning, DID models, and robustness checks
 results/        # Exported tables, figures, and model outputs
