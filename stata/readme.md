@@ -6,7 +6,6 @@ This project studies how China’s carbon emissions trading policy affects the i
 The analysis uses firm-level panel data from 2008 to 2022 and applies a Difference-in-Differences (DID) model by comparing firms inside and outside the pilot regions.
 The goal is to evaluate whether the policy reduces inefficient investment and improves capital allocation.
 
----
 
 ## **What This Project Does**
 
@@ -53,7 +52,6 @@ Investment efficiency is measured using the Richardson (2006) model:
   * `residual > 0 → OverInv`
   * `residual < 0 → WeakInv = abs(residual)`
 
----
 
 ## **Technical Workflow**
 
@@ -76,9 +74,9 @@ Investment efficiency is measured using the Richardson (2006) model:
 
 Uses year-relative dummy variables:
 
-```
+
 Before3 Before2 Before1 Current After1 After2 After3
-```
+
 
 to observe dynamic policy effects across time.
 
@@ -103,7 +101,7 @@ to observe dynamic policy effects across time.
   * placebo coefficient distribution
 * Save regression models for cross-table comparison.
 
----
+
 
 ## **Key Findings**
 
@@ -123,7 +121,6 @@ Firms in pilot regions reduce inefficient investment more than those in non-pilo
 * Placebo outcomes concentrate near zero, unlike the real effect.
 * Changing policy year yields similar coefficient patterns.
 
----
 
 ## **Repository Structure**
 
@@ -133,9 +130,9 @@ code/           # Stata scripts for cleaning, DID models, and robustness checks
 results/        # Exported tables, figures, and model outputs
 paper/          # Full research paper and reference materials
 README.md
-```
 
----
+
+
 
 ## **Methods and Tools**
 
@@ -148,7 +145,7 @@ README.md
 * **DOCX** export for publication-ready tables
 * **Panel data methods** with year + industry fixed effects
 
----
+
 
 ## **Summary**
 
