@@ -1,6 +1,4 @@
-//--------------------------------------------------------------
 // 1. Define treatment year (policy shock year = 2011)
-//--------------------------------------------------------------
 
 // Post = 1 for all years ≥ 2011, 0 otherwise
 gen Post = (Year >= 2011) & !missing(Year)
@@ -18,10 +16,7 @@ gen Treat = ///
 // DID interaction term
 gen TreatPost = Treat * Post
 
-
-//--------------------------------------------------------------
 // 2. Empirical procedure (winsorization + descriptive statistics)
-//--------------------------------------------------------------
 
 // Install winsorization package
 ssc install winsor2
@@ -43,10 +38,7 @@ corr2docx IneInvest TreatPost $X using Empirical_Results.docx, replace ///
     star(* 0.1 ** 0.05 *** 0.01) fmt(%9.4f) ///
     title("Table 3 Correlation Matrix")
 
-
-//--------------------------------------------------------------
 // 3. Baseline DID regression
-//--------------------------------------------------------------
 
 xi: reg IneInvest Treat Post TreatPost $X i.Year i.IndCode, r
 est store m1
@@ -65,13 +57,9 @@ reg2docx m1 m2 m3 using Empirical_Results.docx, append ///
     title("Table 4 Impact of ETS Policy on Corporate Investment Efficiency") ///
     note("Note: ***, **, * indicate significance at the 1%, 5%, and 10% levels. Robust t-statistics in parentheses.")
 
-
-//--------------------------------------------------------------
 // 4. Robustness Checks
-//--------------------------------------------------------------
-// (1) Parallel Trends Test (Event study specification)
-//--------------------------------------------------------------
 
+// (1) Parallel Trends Test (Event study specification)
 // Define relative year indicators (baseline = -1 or omitted group)
 gen Dyear = Year - 2011
 gen Before3 = (Dyear == -3 & Treat == 1)
@@ -108,10 +96,7 @@ coefplot m1 m2 m3, ///
     vertical recast(connect) yline(0)
 
 
-//--------------------------------------------------------------
 // (2) Placebo Test (Random permutation)
-//--------------------------------------------------------------
-
 // Run baseline regression to store real effect
 sum
 reghdfe IneInvest TreatPost, absorb(IndCode Year) vce(robust)
@@ -149,10 +134,8 @@ twoway ///
     plotregion(style(none)) graphregion(color(white))
 
 
-//--------------------------------------------------------------
-// (3) Robustness: Change policy shock year to 2013
-//--------------------------------------------------------------
 
+// (3) Robustness: Change policy shock year to 2013
 // Redefine Post = 1 for Year ≥ 2013
 gen Post2 = 1 if Year >= 2013
 replace Post2 = 0 if Post2 == .
